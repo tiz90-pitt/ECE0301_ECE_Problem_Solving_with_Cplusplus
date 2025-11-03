@@ -3,6 +3,14 @@
 
 class SafeArray
 {
+private:
+  int *dataptr;
+  int size;
+
+public:
+  SafeArray();
+  SafeArray(int);
+  int get_size() const;
 };
 
 #endif
