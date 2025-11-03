@@ -10,7 +10,7 @@ public:
     static const int MAX_COMPONENTS_NUM = 1001;
 
     // TODO: default constructor and constructor with args
-
+    
     // TODO: accessors
 
     // provided: assign zero amplitudes to all frequencies
