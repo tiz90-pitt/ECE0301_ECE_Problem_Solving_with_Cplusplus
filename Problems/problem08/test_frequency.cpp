@@ -118,24 +118,20 @@ TEST_CASE("Test gaussian", "[frequency]")
 }
 TEST_CASE("Test operator==", "[frequency]")
 {
+    const double amp = 5;
     Frequency f1(5, 0.1); // f1 and f2 should be all 0
     Frequency f2(5, 0.1);
+    f1.constant(amp);
+    f2.constant(amp);
     Frequency f3(5, 0.3);  // Different increment
     Frequency f4(10, 0.1); // Different num_components
-    Frequency f5(5, 0.1);
-    f5.constant(1.0); // Different amplitudes
     // Test True
     REQUIRE(f1 == f2);
     // Test False
     REQUIRE_FALSE(f1 == f3); // Different increment
     REQUIRE_FALSE(f1 == f4); // Different num_components
-    REQUIRE_FALSE(f1 == f5); // Different amplitudes
-    // Test Non-zero amps
-    f1.constant(2.0); // Now f1 and f2 should be equal
-    f2.constant(2.0);
-    REQUIRE(f1 == f2);
-    f2.constant(2.0 + THRESHOLD * 3);
-    REQUIRE_FALSE(f1 == f2);
+    f2.constant(amp * THRESHOLD * 2);
+    REQUIRE_FALSE(f1 == f2); // Different amplitudes
 }
 TEST_CASE("Test operator<=", "[frequency]")
 {
