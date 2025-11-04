@@ -147,3 +147,29 @@ TEST_CASE("Test operator<=", "[frequency]")
     f1.constant(1.0);
     REQUIRE_FALSE(f1 <= f2);
 }
+TEST_CASE("Test operator>>", "[frequency]")
+{
+    Frequency f1(4, 0.2);
+    Frequency f2(4, 0.2);
+    f1.constant(10); 
+    f2.constant(5);
+    // Test True
+    REQUIRE(f1 >> f2);
+    // Different num_components
+    Frequency f3(2, 0.2);
+    f3.constant(10);
+    REQUIRE(f3 >> f2); // f3 has higher avg power than f2
+    // Test False
+    f2.constant(5 + THRESHOLD);
+    REQUIRE_FALSE(f2 >> f1); // f2 has lower avg power than f1
+}
+TEST_CASE("Test operator^", "[frequency]")
+{
+    Frequency f1(4, 0.2);
+    f1.constant(3.0);
+    // Testing for logic error
+    Frequency f2(4, 0.3); // Different increment
+    REQUIRE_THROWS_AS(f1 ^ f2, std::logic_error);
+    // Testing for 
+
+}
