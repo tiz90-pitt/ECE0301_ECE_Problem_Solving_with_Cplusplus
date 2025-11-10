@@ -21,12 +21,21 @@ private:
 
 public:
     // default constructor
-    Database();
+    Database(); // A
 
+    Database(const Entry& entry);
+    Database(const std::vector<Entry>& entries);
     // other public functions go here
+    bool add(const Entry& entry);
+    bool remove(int id);
+    int size() const;
+    bool is_empty() const;
+    bool search(int id) const;
+    std::vector<Entry> get_all_entries() const;
+    void sort_by_id(bool ascending = true);
 
-    void sort_by_name();
-    int search_criteria(double upper[3]) const;
+    void sort_by_name(); // K
+    int search_criteria(double upper[3]) const; // L
 };
 
 #endif
