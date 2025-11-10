@@ -151,7 +151,7 @@ TEST_CASE("Test operator>>", "[frequency]")
 {
     Frequency f1(4, 0.2);
     Frequency f2(4, 0.2);
-    f1.constant(10); 
+    f1.constant(10);
     f2.constant(5);
     // Test True
     REQUIRE(f1 >> f2);
@@ -167,9 +167,22 @@ TEST_CASE("Test operator^", "[frequency]")
 {
     Frequency f1(4, 0.2);
     f1.constant(3.0);
+    Frequency f2(4, 0.2);
+    f2.constant(2.0);
     // Testing for logic error
-    Frequency f2(4, 0.3); // Different increment
-    REQUIRE_THROWS_AS(f1 ^ f2, std::logic_error);
-    // Testing for 
-
+    Frequency f3(4, 0.3);
+    REQUIRE_THROWS_AS(f1 ^ f3, std::logic_error);
+    // Testing for lengths
+    Frequency feq = f1 ^ f2;
+    REQUIRE(feq.get_component() == 4);
+    REQUIRE(std::abs(feq.get_increment() - 0.2) <= THRESHOLD);
+    // Checking for the first amp: 3.0*2.0 = 6.0
+    REQUIRE(std::abs(feq.freq_data[0].amplitudes - 6.0) <= THRESHOLD);
+    // Checking for the lengths
+    Frequency f4(2, 0.2); // Shorter length
+    f4.constant(4.0);
+    Frequency fdiff = f1 ^ f4;
+    REQUIRE(fdiff.get_component() == 4);
+    // 3.0*4.0=12.0
+    REQUIRE(std::abs(fdiff.freq_data[0].amplitudes - 12.0) <= THRESHOLD);
 }
