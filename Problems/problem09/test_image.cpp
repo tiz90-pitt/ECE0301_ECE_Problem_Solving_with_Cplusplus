@@ -176,3 +176,15 @@ TEST_CASE("Test Deep Copy", "[image]")
     REQUIRE(im4.get_height() == 2);
     REQUIRE(im4.get_pixel(0,0) == BLACK);
 }
+TEST_CASE("Test Overloaded Operator", "[image]") {
+    Image im(1,1);
+    RGBPIXEL add = YELLOW; // {0x00, 0xFF, 0xFF}
+    // Image + RGBPIXEL
+    Image result = im + add;
+    REQUIRE(result.get_pixel(0,0) == BLUE); // Green + Yellow = Blue
+    // RGBPIXEL + Image
+    Image result2 = add + im;
+    REQUIRE(result2.get_pixel(0,0) == BLUE); // Green + Yellow = Blue
+    // Is im unchanged?
+    REQUIRE(im.get_pixel(0,0) == GREEN);
+}
