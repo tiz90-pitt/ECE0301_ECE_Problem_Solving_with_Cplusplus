@@ -155,8 +155,8 @@ TEST_CASE("Test Rectangular Image Constructor", "[image]")
 TEST_CASE("Test Deep Copy", "[image]")
 {
     Image im(3, 3);
-    im1.set_pixel(0, RED); // Color terms are defined in bitmap.hpp
-    im1.set_pixel(4, BLUE);
+    im.set_pixel(0, RED); // Color terms are defined in bitmap.hpp
+    im.set_pixel(4, BLUE);
 
     Image im2 = im; // im2 is declared using copy constructor
 
