@@ -6,6 +6,7 @@
 
 void UniqueArray::set(int index, int val)
 {
+<<<<<<< HEAD
     for (int i = 0; i < get_size(); i++)
     {
         if (get(i) == val)
@@ -19,4 +20,12 @@ void UniqueArray::set(int index, int val)
     // because it would first call UniqueArray::set( , ), while the recursion never ends
 
     // Rule: compiler first looks for function in the current class, if not found, then looks in parent class
+=======
+    for (int i=0; i<get_size(); i++){
+        if (get(i) == val){
+            throw std::logic_error("Duplicate value");
+        }
+    }
+    SafeArray::set(index, val); // using set(index, val) here would cause infinite recursion
+>>>>>>> ad4b5081d9c95051f0fe346333fb5fbe9fa3ed05
 }

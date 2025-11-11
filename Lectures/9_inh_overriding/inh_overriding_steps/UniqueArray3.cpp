@@ -8,6 +8,7 @@
 
 void UniqueArray::set(int index, int val)
 {
+<<<<<<< HEAD
     for (int i = 0; i < get_size(); i++)
     {
         if (get(i) == val) // if SafeArray attribute is "protected", can directly use dataptr[i] as well
@@ -31,4 +32,12 @@ void UniqueArray::set(int index, int val)
     }
     dataptr[index] = val;
     */
+=======
+    for (int i=0; i<get_size(); i++){
+        if (get(i) == val){
+            throw std::logic_error("Duplicate value");
+        }
+    }
+    SafeArray::set(index, val); // using set(index, val) here would cause infinite recursion
+>>>>>>> ad4b5081d9c95051f0fe346333fb5fbe9fa3ed05
 }

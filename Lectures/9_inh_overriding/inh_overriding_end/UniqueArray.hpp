@@ -5,6 +5,7 @@
 
 #include "SafeArray.hpp"
 
+<<<<<<< HEAD
 class UniqueArray : public SafeArray
 {
 public:
@@ -15,6 +16,12 @@ public:
 
     // "final" is optional but using it prevents further overriding in UniqueArray's child classes
     // it is also okay by using "virtual void set(int, int) override final;"
+=======
+class UniqueArray: public SafeArray{
+    public:
+        using SafeArray::SafeArray; 
+        void set(int, int) override final;
+>>>>>>> ad4b5081d9c95051f0fe346333fb5fbe9fa3ed05
 };
 
 #endif
