@@ -139,5 +139,40 @@ TEST_CASE("Test Square Image Constructor", "[image]")
 }
 TEST_CASE("Test Rectangular Image Constructor", "[image]")
 {
-    
+    Image im;
+    REQUIRE(im.get_width() == 0);
+    REQUIRE(im.get_height() == 0);
+
+    Image im2(4, 6);
+    REQUIRE(im2.get_width() == 4);
+    REQUIRE(im2.get_height() == 6);
+
+    for (int i = 0; i < im2.get_width() * im2.get_height(); i++)
+    {
+        REQUIRE(im2.get_pixel(i) == GREEN);
+    }
+}
+TEST_CASE("Test Deep Copy", "[image]")
+{
+    Image im(3, 3);
+    im1.set_pixel(0, RED); // Color terms are defined in bitmap.hpp
+    im1.set_pixel(4, BLUE);
+
+    Image im2 = im; // im2 is declared using copy constructor
+
+    // Changing the colors of im
+    im.set_pixel(0, BLACK); 
+    im.set_pixel(4, YELLOW);
+
+    // Checking if the copied images stayed the same
+    REQUIRE(im2.get_pixel(0) == RED);
+    REQUIRE(im2.get_pixel(4) == BLUE);
+
+    Image im3(2, 2);
+    im3.set_pixel(0,0,BLACK);
+
+    im4 = im3; // im4 is assigned using copy assignment
+    REQUIRE(im4.get_width() == 2);
+    REQUIRE(im4.get_height() == 2);
+    REQUIRE(im4.get_pixel(0,0) == BLACK);
 }
