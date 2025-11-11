@@ -116,14 +116,20 @@ Image operator+(const RGBPIXEL &val, const Image &im)
 }
 
 // This will be useful if attempting bonus
-// Image operator-(const Image &im, const RGBPIXEL &val)
-// {
-//     // OPTIONAL for bonus, to simply return im is wrong
-//     return im;
-// }
+Image operator-(const Image &im, const RGBPIXEL &val)
+{
+    // OPTIONAL for bonus, to simply return im is wrong
+    Image result(im.get_width(), im.get_height());
+    // element-wise subtracting val
+    for (int i = 0; i < im.get_width() * im.get_height(); i++)
+    {
+        result.set_pixel(i, im.get_pixel(i) - val);
+    }
+    return result;
+}
 
-// Image operator-(const RGBPIXEL &val, const Image &im)
-// {
-//     // OPTIONAL for bonus, to simply return im is wrong
-//     return im;
-// }
+Image operator-(const RGBPIXEL &val, const Image &im)
+{
+    // OPTIONAL for bonus, to simply return im is wrong
+    return operator-(im, val);
+}

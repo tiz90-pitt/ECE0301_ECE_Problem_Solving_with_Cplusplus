@@ -45,7 +45,7 @@ Image operator+(const RGBPIXEL &val, const Image &im);
 
 // This will be useful if attempting bonus
 // // OPTIONAL for bonus: subtraction operator
-// Image operator-(const Image &im, const RGBPIXEL &val);
-// Image operator-(const RGBPIXEL &val, const Image &im);
+Image operator-(const Image &im, const RGBPIXEL &val);
+Image operator-(const RGBPIXEL &val, const Image &im);
 
 #endif
