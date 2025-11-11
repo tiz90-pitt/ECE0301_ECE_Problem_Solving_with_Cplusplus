@@ -187,4 +187,5 @@ TEST_CASE("Test Overloaded Operator", "[image]") {
     REQUIRE(result2.get_pixel(0,0) == BLUE); // Green + Yellow = Blue
     // Is im unchanged?
     REQUIRE(im.get_pixel(0,0) == GREEN);
+    
 }
