@@ -88,13 +88,28 @@ void Image::set_pixel(int index, const RGBPIXEL color)
 bool Image::load_from_file(std::string filename)
 {
     // BONUS
+    delete[] image_data; // Free existing data
+    RGBIMAGEDATA imdata = import_bmp(filename);
+    if (imdata.data != nullptr)
+    {
+        width = imdata.width;
+        height = imdata.height;
+        image_data = imdata.data;
+        return true;
+    }
+    width = 0;
+    height = 0;
+    image_data = nullptr;
     return false;
 }
 
 bool Image::save_to_file(std::string filename)
 {
     // BONUS
-    return false;
+    if (image_data == nullptr){
+        return false;
+    }
+    return export_bmp({image_data, width, height}, filename);
 }
 
 Image operator+(const Image &im, const RGBPIXEL &val)

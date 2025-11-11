@@ -154,6 +154,7 @@ TEST_CASE("Test Rectangular Image Constructor", "[image]")
 }
 TEST_CASE("Test Deep Copy", "[image]")
 {
+    const RGBPIXEL YELLOW = {0x00, 0xFF, 0xFF};
     Image im(3, 3);
     im.set_pixel(0, RED); // Color terms are defined in bitmap.hpp
     im.set_pixel(4, BLUE);
@@ -169,23 +170,25 @@ TEST_CASE("Test Deep Copy", "[image]")
     REQUIRE(im2.get_pixel(4) == BLUE);
 
     Image im3(2, 2);
-    im3.set_pixel(0,0,BLACK);
+    im3.set_pixel(0,BLACK);
 
-    im4 = im3; // im4 is assigned using copy assignment
+    Image im4 = im3; // im4 is assigned using copy assignment
     REQUIRE(im4.get_width() == 2);
     REQUIRE(im4.get_height() == 2);
-    REQUIRE(im4.get_pixel(0,0) == BLACK);
+    REQUIRE(im4.get_pixel(0) == BLACK);
 }
-TEST_CASE("Test Overloaded Operator", "[image]") {
+TEST_CASE("Test Overloaded Operator", "[image]")
+{
+    const RGBPIXEL YELLOW = {0x00, 0xFF, 0xFF};
     Image im(1,1);
     RGBPIXEL add = YELLOW; // {0x00, 0xFF, 0xFF}
     // Image + RGBPIXEL
     Image result = im + add;
-    REQUIRE(result.get_pixel(0,0) == BLUE); // Green + Yellow = Blue
+    REQUIRE(result.get_pixel(0) == BLUE); // Green + Yellow = Blue
     // RGBPIXEL + Image
     Image result2 = add + im;
-    REQUIRE(result2.get_pixel(0,0) == BLUE); // Green + Yellow = Blue
+    REQUIRE(result2.get_pixel(0) == BLUE); // Green + Yellow = Blue
     // Is im unchanged?
-    REQUIRE(im.get_pixel(0,0) == GREEN);
+    REQUIRE(im.get_pixel(0) == GREEN);
     
 }
