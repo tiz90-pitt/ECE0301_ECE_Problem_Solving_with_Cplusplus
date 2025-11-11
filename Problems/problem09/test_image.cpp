@@ -122,3 +122,22 @@ TEST_CASE("Test operator+", "[image]")
 }
 
 /* Your test cases here */
+TEST_CASE("Test Square Image Constructor", "[image]")
+{
+    Image im;
+    REQUIRE(im.get_width() == 0);
+    REQUIRE(im.get_height() == 0);
+
+    Image im2(5);
+    REQUIRE(im2.get_width() == 5);
+    REQUIRE(im2.get_height() == 5);
+
+    for (int i = 0; i < im2.get_width() * im2.get_height(); i++)
+    {
+        REQUIRE(im2.get_pixel(i) == GREEN);
+    }
+}
+TEST_CASE("Test Rectangular Image Constructor", "[image]")
+{
+    
+}

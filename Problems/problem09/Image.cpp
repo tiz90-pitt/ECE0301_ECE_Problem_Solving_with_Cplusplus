@@ -100,9 +100,9 @@ bool Image::save_to_file(std::string filename)
 Image operator+(const Image &im, const RGBPIXEL &val)
 {
     // TODO - Based on SafeArray5
-    Image result(im.get_height(), im.get_width());
+    Image result(im.get_width(), im.get_height());
     // element-wise adding val
-    for (int i = 0; i < result.get_height() * result.get_width(); i++)
+    for (int i = 0; i < im.get_width() * im.get_height(); i++)
     {
         result.set_pixel(i, im.get_pixel(i) + val);
     }
