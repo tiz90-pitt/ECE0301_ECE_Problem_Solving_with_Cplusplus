@@ -35,6 +35,6 @@ TEST_CASE("Your Exam 2 test case", "[exam2]")
     std::cout << " Exam " << exam << std::endl;
     REQUIRE(course == course_copy);
 
-    SampleClass sample;
-    sample.displayMessage();
+    // SampleClass sample;
+    // sample.displayMessage();
 }

@@ -10,7 +10,7 @@
 
 #include "Exam2.hpp"
 
-void SampleClass::displayMessage() const
-{
-  std::cout << "Object-oriented programming rocks!" << std::endl;
-}
+// void SampleClass::displayMessage() const
+// {
+//   std::cout << "Object-oriented programming rocks!" << std::endl;
+// }
