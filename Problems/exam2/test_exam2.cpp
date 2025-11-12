@@ -13,6 +13,19 @@
 #include "catch.hpp"
 #include "Exam2.hpp"
 
+double func2(chip *c) {
+    return std::pow(c->get_current(), 2);
+}
+
+TEST_CASE("testing binding", "[exam2]")
+{
+    chip_74 *ptr = new chip_74(4,5,0);
+    double test1= ptr->get_current();
+    std::cout << "Current: " << test1 << std::endl;
+    double test2 = func2(ptr);
+    REQUIRE(std::abs(test1 * test1 - test2) < 1e-9);
+}
+
 TEST_CASE("Your Exam 2 test case", "[exam2]")
 {
     int course = 301;
